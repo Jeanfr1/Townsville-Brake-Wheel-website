@@ -15,8 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" as="image" type="image/avif" media="(min-width: 900px)" imagesrcset="/img/hero-mid-v1-1280.avif 1280w, /img/hero-mid-v1-1920.avif 1920w, /img/hero-mid-v1-2560.avif 2560w" imagesizes="min(100vw, 1920px)" fetchpriority="high">
-<link rel="preload" as="image" type="image/avif" media="(max-width: 899.98px)" imagesrcset="/img/hero-mobile-v1-720.avif 720w, /img/hero-mobile-v1-1080.avif 1080w, /img/hero-mobile-v1-1440.avif 1440w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(min-width: 1024px)" imagesrcset="/img/hero-mid-v2-1600.avif 1600w, /img/hero-mid-v2-2400.avif 2400w, /img/hero-mid-v2-3072.avif 3072w" imagesizes="min(102vw, 1620px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(max-width: 1023.98px)" imagesrcset="/img/hero-mobile-v1-720.avif 720w, /img/hero-mobile-v1-1080.avif 1080w, /img/hero-mobile-v1-1440.avif 1440w" imagesizes="100vw" fetchpriority="high">
 <script>
   // motion flags before first paint; the hidden intro state is owned by src/js/hero.js
   (function (d) {
@@ -54,40 +54,41 @@
   <!-- 1 · CONTROL -->
   <section id="start" class="hero" aria-labelledby="hero-title">
     <div class="hero-stage" data-hero>
-      <div class="plates" aria-hidden="true">
-        <picture class="plate" data-state="covered">
-          <source type="image/avif" media="(min-width: 900px)" srcset="/img/hero-covered-v1-1280.avif 1280w, /img/hero-covered-v1-1920.avif 1920w, /img/hero-covered-v1-2560.avif 2560w" sizes="min(100vw, 1920px)">
-          <source type="image/webp" media="(min-width: 900px)" srcset="/img/hero-covered-v1-1280.webp 1280w, /img/hero-covered-v1-1920.webp 1920w, /img/hero-covered-v1-2560.webp 2560w" sizes="min(100vw, 1920px)">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="2560" height="2215" decoding="async">
-        </picture>
-        <picture class="plate" data-state="lifted">
-          <source type="image/avif" media="(min-width: 900px)" data-srcset="/img/hero-lifted-v1-1280.avif 1280w, /img/hero-lifted-v1-1920.avif 1920w, /img/hero-lifted-v1-2560.avif 2560w" sizes="min(100vw, 1920px)">
-          <source type="image/webp" media="(min-width: 900px)" data-srcset="/img/hero-lifted-v1-1280.webp 1280w, /img/hero-lifted-v1-1920.webp 1920w, /img/hero-lifted-v1-2560.webp 2560w" sizes="min(100vw, 1920px)">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="2560" height="2215" decoding="async">
-        </picture>
-        <picture class="plate" data-state="revealed">
-          <source type="image/avif" media="(min-width: 900px)" data-srcset="/img/hero-revealed-v1-1280.avif 1280w, /img/hero-revealed-v1-1920.avif 1920w, /img/hero-revealed-v1-2560.avif 2560w" sizes="min(100vw, 1920px)">
-          <source type="image/webp" media="(min-width: 900px)" data-srcset="/img/hero-revealed-v1-1280.webp 1280w, /img/hero-revealed-v1-1920.webp 1920w, /img/hero-revealed-v1-2560.webp 2560w" sizes="min(100vw, 1920px)">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="2560" height="2215" decoding="async">
-        </picture>
-        <picture class="plate is-base" data-state="mid">
-          <source type="image/avif" media="(min-width: 900px)" srcset="/img/hero-mid-v1-1280.avif 1280w, /img/hero-mid-v1-1920.avif 1920w, /img/hero-mid-v1-2560.avif 2560w" sizes="min(100vw, 1920px)">
-          <source type="image/webp" media="(min-width: 900px)" srcset="/img/hero-mid-v1-1280.webp 1280w, /img/hero-mid-v1-1920.webp 1920w, /img/hero-mid-v1-2560.webp 2560w" sizes="min(100vw, 1920px)">
-          <source type="image/avif" srcset="/img/hero-mobile-v1-720.avif 720w, /img/hero-mobile-v1-1080.avif 1080w, /img/hero-mobile-v1-1440.avif 1440w" sizes="100vw">
-          <source type="image/webp" srcset="/img/hero-mobile-v1-720.webp 720w, /img/hero-mobile-v1-1080.webp 1080w, /img/hero-mobile-v1-1440.webp 1440w" sizes="100vw">
-          <img src="/img/hero-mid-v1-1920.webp" alt="Yellow and black vintage Falcon GT with its silver cover sliding off the roof, mountains at sunset behind" width="2560" height="2215" fetchpriority="high">
-        </picture>
-        <div class="sweep" aria-hidden="true"></div>
-      </div>
       <div class="hero-shade" aria-hidden="true"></div>
+      <div class="frame">
+        <div class="plates" aria-hidden="true">
+          <picture class="plate" data-state="covered">
+            <source type="image/avif" media="(min-width: 1024px)" srcset="/img/hero-covered-v2-1600.avif 1600w, /img/hero-covered-v2-2400.avif 2400w, /img/hero-covered-v2-3072.avif 3072w" sizes="min(102vw, 1620px)">
+            <source type="image/webp" media="(min-width: 1024px)" srcset="/img/hero-covered-v2-1600.webp 1600w, /img/hero-covered-v2-2400.webp 2400w, /img/hero-covered-v2-3072.webp 3072w" sizes="min(102vw, 1620px)">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="3072" height="1940" decoding="async">
+          </picture>
+          <picture class="plate" data-state="lifted">
+            <source type="image/avif" media="(min-width: 1024px)" data-srcset="/img/hero-lifted-v2-1600.avif 1600w, /img/hero-lifted-v2-2400.avif 2400w, /img/hero-lifted-v2-3072.avif 3072w" sizes="min(102vw, 1620px)">
+            <source type="image/webp" media="(min-width: 1024px)" data-srcset="/img/hero-lifted-v2-1600.webp 1600w, /img/hero-lifted-v2-2400.webp 2400w, /img/hero-lifted-v2-3072.webp 3072w" sizes="min(102vw, 1620px)">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="3072" height="1940" decoding="async">
+          </picture>
+          <picture class="plate" data-state="revealed">
+            <source type="image/avif" media="(min-width: 1024px)" data-srcset="/img/hero-revealed-v2-1600.avif 1600w, /img/hero-revealed-v2-2400.avif 2400w, /img/hero-revealed-v2-3072.avif 3072w" sizes="min(102vw, 1620px)">
+            <source type="image/webp" media="(min-width: 1024px)" data-srcset="/img/hero-revealed-v2-1600.webp 1600w, /img/hero-revealed-v2-2400.webp 2400w, /img/hero-revealed-v2-3072.webp 3072w" sizes="min(102vw, 1620px)">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="3072" height="1940" decoding="async">
+          </picture>
+          <picture class="plate is-base" data-state="mid">
+            <source type="image/avif" media="(min-width: 1024px)" srcset="/img/hero-mid-v2-1600.avif 1600w, /img/hero-mid-v2-2400.avif 2400w, /img/hero-mid-v2-3072.avif 3072w" sizes="min(102vw, 1620px)">
+            <source type="image/webp" media="(min-width: 1024px)" srcset="/img/hero-mid-v2-1600.webp 1600w, /img/hero-mid-v2-2400.webp 2400w, /img/hero-mid-v2-3072.webp 3072w" sizes="min(102vw, 1620px)">
+            <source type="image/avif" srcset="/img/hero-mobile-v1-720.avif 720w, /img/hero-mobile-v1-1080.avif 1080w, /img/hero-mobile-v1-1440.avif 1440w" sizes="100vw">
+            <source type="image/webp" srcset="/img/hero-mobile-v1-720.webp 720w, /img/hero-mobile-v1-1080.webp 1080w, /img/hero-mobile-v1-1440.webp 1440w" sizes="100vw">
+            <img src="/img/hero-mid-v2-1600.webp" alt="Yellow and black vintage Falcon GT with its silver cover sliding off the roof, mountains at sunset behind" width="3072" height="1940" fetchpriority="high">
+          </picture>
+          <div class="sweep" aria-hidden="true"></div>
+        </div>
 
       <h1 id="hero-title" class="hero-word fit"><span class="sx">Control</span></h1>
 
       <!-- car + cover cut-outs: CONTROL sits behind the bodywork -->
       <div class="fg" aria-hidden="true">
-        <img class="fg-plate" data-state="mid" data-srcset="/img/hero-mid-fg-v1-1280.webp 1280w, /img/hero-mid-fg-v1-1920.webp 1920w, /img/hero-mid-fg-v1-2560.webp 2560w" sizes="min(100vw, 1920px)" alt="" width="2560" height="2215">
-        <img class="fg-plate" data-state="lifted" data-srcset="/img/hero-lifted-fg-v1-1280.webp 1280w, /img/hero-lifted-fg-v1-1920.webp 1920w, /img/hero-lifted-fg-v1-2560.webp 2560w" sizes="min(100vw, 1920px)" alt="" width="2560" height="2215">
-        <img class="fg-plate" data-state="revealed" data-srcset="/img/hero-revealed-fg-v1-1280.webp 1280w, /img/hero-revealed-fg-v1-1920.webp 1920w, /img/hero-revealed-fg-v1-2560.webp 2560w" sizes="min(100vw, 1920px)" alt="" width="2560" height="2215">
+        <img class="fg-plate" data-state="mid" data-srcset="/img/hero-mid-fg-v2-1600.webp 1600w, /img/hero-mid-fg-v2-2400.webp 2400w, /img/hero-mid-fg-v2-3072.webp 3072w" sizes="min(102vw, 1620px)" alt="" width="3072" height="1940">
+        <img class="fg-plate" data-state="lifted" data-srcset="/img/hero-lifted-fg-v2-1600.webp 1600w, /img/hero-lifted-fg-v2-2400.webp 2400w, /img/hero-lifted-fg-v2-3072.webp 3072w" sizes="min(102vw, 1620px)" alt="" width="3072" height="1940">
+        <img class="fg-plate" data-state="revealed" data-srcset="/img/hero-revealed-fg-v2-1600.webp 1600w, /img/hero-revealed-fg-v2-2400.webp 2400w, /img/hero-revealed-fg-v2-3072.webp 3072w" sizes="min(102vw, 1620px)" alt="" width="3072" height="1940">
       </div>
 
       <div class="hero-head">
@@ -121,30 +122,32 @@
 
       <button class="film-link mono" type="button" data-open="film"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M1 1l8 5-8 5z"/></svg>Watch the reveal</button>
 
+      </div>
       <div class="hero-dim" aria-hidden="true"></div>
       <!-- hand-off: the front wheel opens onto the alignment close-up (desktop, motion on) -->
       <div class="iris" aria-hidden="true">
-        <div class="iris-clip">
+        <div class="iris-clip"><div class="frame">
           <div class="al-media iris-media">
             <picture>
-              <source type="image/avif" media="(min-width: 900px)" data-srcset="/img/alignment-v1-1280.avif 1280w, /img/alignment-v1-1920.avif 1920w, /img/alignment-v1-2880.avif 2880w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .83), 160vw">
-              <source type="image/webp" media="(min-width: 900px)" data-srcset="/img/alignment-v1-1280.webp 1280w, /img/alignment-v1-1920.webp 1920w, /img/alignment-v1-2880.webp 2880w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .83), 160vw">
+              <source type="image/avif" media="(min-width: 1024px)" data-srcset="/img/alignment-v1-1280.avif 1280w, /img/alignment-v1-1920.avif 1920w, /img/alignment-v1-2880.avif 2880w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .62), 160vw">
+              <source type="image/webp" media="(min-width: 1024px)" data-srcset="/img/alignment-v1-1280.webp 1280w, /img/alignment-v1-1920.webp 1920w, /img/alignment-v1-2880.webp 2880w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .62), 160vw">
               <img class="al-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="3344" height="1882">
             </picture>
           </div>
           <div class="al-shade"></div>
-        </div>
-        <svg class="iris-ring" viewBox="0 0 757 353" preserveAspectRatio="none"><circle cx="412" cy="235" r="0"/></svg>
+        </div></div>
+        <div class="frame"><svg class="iris-ring" viewBox="0 0 757 353" preserveAspectRatio="none"><circle cx="412" cy="235" r="0"/></svg></div>
       </div>
     </div>
   </section>
 
   <!-- 2 · EVERY ANGLE MATTERS -->
   <section id="alignment" class="alignment" aria-labelledby="alignment-title">
+    <div class="frame">
     <div class="al-media">
       <picture>
-        <source type="image/avif" srcset="/img/alignment-v1-1280.avif 1280w, /img/alignment-v1-1920.avif 1920w, /img/alignment-v1-2880.avif 2880w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .83), 160vw">
-        <source type="image/webp" srcset="/img/alignment-v1-1280.webp 1280w, /img/alignment-v1-1920.webp 1920w, /img/alignment-v1-2880.webp 2880w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .83), 160vw">
+        <source type="image/avif" srcset="/img/alignment-v1-1280.avif 1280w, /img/alignment-v1-1920.avif 1920w, /img/alignment-v1-2880.avif 2880w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .62), 160vw">
+        <source type="image/webp" srcset="/img/alignment-v1-1280.webp 1280w, /img/alignment-v1-1920.webp 1920w, /img/alignment-v1-2880.webp 2880w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .62), 160vw">
         <img class="al-img" src="/img/alignment-v1-1920.webp" alt="Alignment clamp fitted to the front wheel of the yellow Falcon in the workshop" width="3344" height="1882" loading="lazy" decoding="async">
       </picture>
     </div>
@@ -162,10 +165,12 @@
     </ul>
     <!-- TODO(tbwac): client sign-off on the board wording kept here and in the services note -->
     <p class="al-side fit mono"><span class="ln">Precision</span> <span class="ln">equipment</span> <span class="ln">Experienced</span> <span class="ln">technicians</span> <span class="ln">Real results</span></p>
+    </div>
   </section>
 
   <!-- 3 · KEEPING YOU ON TRACK (the one solid colour) -->
   <section id="services" class="services" aria-labelledby="services-title">
+    <div class="frame">
     <svg class="wheel" viewBox="0 0 757 297" preserveAspectRatio="none" aria-hidden="true">
       <g class="wheel-rot">
         <circle class="thin" cx="790" cy="140" r="212"/><circle class="dash" cx="790" cy="140" r="196"/>
@@ -197,6 +202,7 @@
         <svg class="ico" viewBox="0 0 25 53" aria-hidden="true"><g transform="rotate(14 12.5 26.5)"><path d="M10 1h6v7h-6zM12 46v6M13 46v6"/><path d="M5 10q8-3 15 0M5 16q8-3 15 0M5 22q8-3 15 0M5 28q8-3 15 0M5 34q8-3 15 0M5 40q8-3 15 0"/><path d="M10 8v38h5V8"/></g></svg>
         <h3>Steering &amp; <span>suspension</span></h3><p>Better control. <span>A more comfortable drive.</span></p></button></li>
     </ul>
+    </div>
   </section>
 
   <!-- 4 · LOCAL -->
@@ -204,27 +210,30 @@
   <section id="local" class="local" aria-labelledby="local-title">
     <div class="lo-media">
       <picture>
-        <source type="image/avif" srcset="/img/local-v2-960.avif 960w, /img/local-v2-1600.avif 1600w, /img/local-v2-2400.avif 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
-        <source type="image/webp" srcset="/img/local-v2-960.webp 960w, /img/local-v2-1600.webp 1600w, /img/local-v2-2400.webp 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
+        <source type="image/avif" srcset="/img/local-v2-960.avif 960w, /img/local-v2-1600.avif 1600w, /img/local-v2-2400.avif 2400w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .51), 100vw">
+        <source type="image/webp" srcset="/img/local-v2-960.webp 960w, /img/local-v2-1600.webp 1600w, /img/local-v2-2400.webp 2400w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .51), 100vw">
         <img src="/img/local-v2-1600.webp" alt="Red classic Ford sedan parked outside the Townsville Brake &amp; Wheel Alignment workshop" width="2652" height="1808" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="lo-shade" aria-hidden="true"></div>
+    <div class="frame">
     <h2 id="local-title" class="lo-word"><span class="sx">Local</span></h2>
     <p class="lo-copy fit"><span class="ln">For everyday</span> <span class="ln">drives. And</span> <span class="ln">the cars</span> <span class="ln">you love.</span></p>
     <span class="dash lo-dash" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- 5 · GET YOUR NEXT DRIVE SORTED + footer, on the workshop photograph -->
   <div class="finale">
     <div class="co-media">
       <picture>
-        <source type="image/avif" srcset="/img/contact-v1-800.avif 800w, /img/contact-v1-1300.avif 1300w, /img/contact-v1-1890.avif 1890w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .63), 100vw">
-        <source type="image/webp" srcset="/img/contact-v1-800.webp 800w, /img/contact-v1-1300.webp 1300w, /img/contact-v1-1890.webp 1890w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .63), 100vw">
+        <source type="image/avif" srcset="/img/contact-v1-800.avif 800w, /img/contact-v1-1300.avif 1300w, /img/contact-v1-1890.avif 1890w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .46), 100vw">
+        <source type="image/webp" srcset="/img/contact-v1-800.webp 800w, /img/contact-v1-1300.webp 1300w, /img/contact-v1-1890.webp 1890w" sizes="(min-width: 1024px) calc(min(100vw, 1600px) * .46), 100vw">
         <img src="/img/contact-v1-1300.webp" alt="The yellow Townsville Brake &amp; Wheel Alignment workshop on Pilkington Street, Garbutt" width="1895" height="2290" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="co-shade" aria-hidden="true"></div>
+    <div class="frame">
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <h2 id="contact-title" class="co-title"><span class="ln l1"><span class="sx">Get your</span></span> <span class="ln l2"><span class="sx">next drive</span></span> <span class="ln l3"><span class="sx">sorted<span class="dot">.</span></span></span></h2>
       <a class="co-call" href="{{phoneHref}}">
@@ -246,6 +255,7 @@
       </nav>
       <button class="btn btn-foot" type="button" data-open="enquiry">Enquire now <svg class="arrow" viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4"/></svg></button>
     </footer>
+    </div>
   </div>
 </main>
 
@@ -291,7 +301,7 @@
 
 <dialog id="film" class="sheet sheet-film" aria-label="The reveal">
   <button class="sheet-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
-  <video controls playsinline preload="none" muted data-poster="/img/hero-covered-v1-1280.webp" data-src="/media/hero-reveal-720.mp4"></video>
+  <video controls playsinline preload="none" muted data-poster="/img/hero-covered-v2-1600.webp" data-src="/media/hero-reveal-720.mp4"></video>
 </dialog>
 
 <noscript><style>.topbar{position:absolute}</style></noscript>

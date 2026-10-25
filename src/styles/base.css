@@ -45,8 +45,12 @@ button { background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-h
 }
 .skip:focus { transform: none; }
 
-main { position: relative; max-width: 1920px; margin: 0 auto; container-type: inline-size; isolation: isolate; }
-main > * { --u: calc(min(100cqw, 1920px) / 757); }
+main { position: relative; max-width: 1600px; margin: 0 auto; container-type: inline-size; isolation: isolate; }
+/* Board unit. The approved board is 757 px wide, but it is a page drawn at the density
+   of a 1024 px board (type, photos and section heights match the earlier approved
+   1024 px boards). Scaling it to the full screen width made everything 1.9x the board,
+   so: 1 board px = min(width, 1600) / 1024, and the 757 px board is a centred frame. */
+main > * { --u: calc(min(100cqw, 1600px) / 1024); }
 
 .ln { display: block; }
 .dot { color: var(--yellow); }
@@ -106,7 +110,7 @@ main > * { --u: calc(min(100cqw, 1920px) / 757); }
 /* ---------- legal strip ---------- */
 .legal {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 28px;
-  max-width: 1920px; margin: 0 auto; padding: 18px 16px 22px;
+  max-width: 1600px; margin: 0 auto; padding: 18px 16px 22px;
   font-size: 12px; letter-spacing: .06em; color: var(--grey); text-align: center;
   border-top: 1px solid #ffffff12;
 }

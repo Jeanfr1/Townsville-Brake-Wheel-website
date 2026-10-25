@@ -33,8 +33,12 @@ SRC.mkdir(exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 
 BOARD_W, HERO_H = 757, 655          # board px
-PLATE_W = 2560                       # hero plate width in px
-K = PLATE_W / BOARD_W                # plate px per board px
+# The hero plate reaches EXT board px past each side of the board frame: on wide
+# screens the board sits centred (desktop density = a 1024 px board, see board.css)
+# and the kit's own frame already holds real pixels 58 px left / 82 px right of it.
+EXT = 140
+PLATE_W = 3072                       # hero plate width in px
+K = PLATE_W / (BOARD_W + 2 * EXT)    # plate px per board px
 STATES = ["covered", "mid", "lifted", "revealed"]
 
 
@@ -83,11 +87,11 @@ def hero():
     ps, pb = sift_pairs(mid, board)
     s, tx, ty, n, err = fit_scale_translate(ps, pb)
     print(f"hero-mid -> board: s={s:.4f} tx={tx:.1f} ty={ty:.1f} inliers={n} err={err:.2f}px")
-    frame = {"board": [BOARD_W, HERO_H], "plate": [PLATE_W, round(HERO_H * K)], "K": K,
+    frame = {"board": [BOARD_W, HERO_H], "ext": EXT, "plate": [PLATE_W, round(HERO_H * K)], "K": K,
              "source": [w, h], "s": s, "tx": tx, "ty": ty}
 
     factor = s * K                                   # source px -> plate px
-    ox, oy = round(tx * K), round(ty * K)
+    ox, oy = round((tx + EXT) * K), round(ty * K)
     PH = round(HERO_H * K)
     for state in STATES:
         src = rgb(f"images-master/hero-{state}.png")
@@ -103,9 +107,30 @@ def hero():
         x0, y0 = max(0, ox), max(0, oy)
         x1, y1 = min(PLATE_W, ox + big.shape[1]), min(PH, oy + big.shape[0])
         plate[y0:y1, x0:x1] = big[y0 - oy:y1 - oy, x0 - ox:x1 - ox]
+        side_fill(plate, x0, x1)
         save(f"hero-{state}.png", plate)
     (OUT / "hero-frame.json").write_text(json.dumps(frame, indent=1))
     hero_sky()
+
+
+def side_fill(plate, x0, x1):
+    """Beyond the kit's real pixels: mirror the edge, blur and darken it outward.
+
+    Only the outermost strip of very wide screens ever shows it."""
+    p = plate.astype(np.float32)
+    for side in ("left", "right"):
+        n = x0 if side == "left" else plate.shape[1] - x1
+        if n <= 0:
+            continue
+        src = p[:, x0:x0 + n][:, ::-1] if side == "left" else p[:, x1 - n:x1][:, ::-1]
+        soft = cv2.GaussianBlur(src, (0, 0), 14)
+        t = np.linspace(1, 0, n)[None, :, None] if side == "left" else np.linspace(0, 1, n)[None, :, None]
+        # t = distance from the real edge, 0..1
+        fill = (src * (1 - t) + soft * t) * (1 - 0.65 * t)
+        if side == "left":
+            plate[:, :x0] = fill.clip(0, 255).astype(np.uint8)
+        else:
+            plate[:, x1:] = fill.clip(0, 255).astype(np.uint8)
 
 
 def hero_sky(band=150):

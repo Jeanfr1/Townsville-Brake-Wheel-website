@@ -31,7 +31,7 @@ const lines = (els, base, gap, frames, o = {}) => els.map((el, n) => [el, frames
 const draw = (el) => { el.setAttribute('pathLength', '1'); return el }
 
 export function initScenes({ desktopMotion }) {
-  const isDesk = () => matchMedia('(min-width: 900px)').matches
+  const isDesk = () => matchMedia('(min-width: 1024px)').matches
 
   // ---------- 2 · alignment ----------
   const al = $('#alignment')

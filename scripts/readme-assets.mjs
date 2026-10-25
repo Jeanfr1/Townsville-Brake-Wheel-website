@@ -27,13 +27,13 @@ const raf2 = (p) => p.evaluate(() => new Promise((r) => requestAnimationFrame(()
   await page.close()
 }
 
-// ---- desktop sections (1440 x 900)
+// ---- desktop sections (1440 x 900), final states (?static) so no scene is caught mid-move
 {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
-  await page.goto(`${BASE}?nosmooth`, { waitUntil: 'networkidle' })
-  await page.waitForTimeout(3800)
+  await page.goto(`${BASE}?static&nosmooth`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(1500)
   await page.screenshot({ path: `${OUT}/d-hero.png` })
-  for (const [name, sel, off] of [['alignment', '#alignment', -120], ['services', '#services', -160], ['local', '#local', -120], ['contact', '.finale', -60]]) {
+  for (const [name, sel, off] of [['alignment', '#alignment', -64], ['services', '#services', -64], ['local', '#local', -64], ['contact', '.finale', -64]]) {
     await page.evaluate(([s, o]) => { const el = document.querySelector(s); window.scrollTo({ top: el.getBoundingClientRect().top + scrollY + o, behavior: 'instant' }) }, [sel, off])
     await page.waitForTimeout(2600); await raf2(page)
     await page.screenshot({ path: `${OUT}/d-${name}.png` })

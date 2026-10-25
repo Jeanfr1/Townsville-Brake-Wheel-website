@@ -5,7 +5,7 @@
 
 .sv-door { display: none; }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .intro-wait .plates, .intro-wait .fg { opacity: 0; }
   .hero-word { translate: 0 calc((var(--wq, 0) + var(--wy, 0)) * var(--u)); clip-path: inset(-30% -3% 0 -3%); }
   .fg-plate[data-state='mid'] { opacity: 1; }
@@ -65,9 +65,10 @@
   .motion .hero-dim { display: block; position: absolute; inset: 0; z-index: 6; background: var(--ink); opacity: 0; pointer-events: none; }
   .motion .iris { display: block; position: absolute; z-index: 7; left: 0; right: 0; bottom: 0; height: calc(353 * var(--u)); visibility: hidden; pointer-events: none; }
   .motion .iris-clip { position: absolute; inset: 0; overflow: hidden; background: var(--ink);
-    clip-path: circle(calc(var(--ir, 0) * var(--u)) at calc(412 * var(--u)) calc(235 * var(--u))); }
+    clip-path: circle(calc(var(--ir, 0) * var(--u)) at calc(50% + 33.5 * var(--u)) calc(235 * var(--u))); }
   .motion .iris-media { transform-origin: calc(403.5 * var(--u)) calc(171 * var(--u)); will-change: transform; }
   .iris-ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--yellow); overflow: visible; }
+  .iris .frame { pointer-events: none; }
   .iris-ring circle { stroke-width: 2; vector-effect: non-scaling-stroke; }
   .motion .alignment { z-index: 2; margin-top: calc(-353 * var(--u)); visibility: hidden; }
   .motion .alignment.is-docked { visibility: visible; }

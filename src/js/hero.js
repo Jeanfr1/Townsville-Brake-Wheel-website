@@ -15,9 +15,9 @@ const HERO_HUB = [412, 235]      // in the 757 x 353 hand-off box at the bottom 
 const AL_HUB = [437.5, 171]      // in the alignment section
 const HERO_TYRE = 65
 const AL_TYRE = 150
-const IRIS_MAX = 485
+const IRIS_MAX = 610           // reaches the page corners past the centred frame
 
-const unit = () => Math.min(document.querySelector('main').clientWidth, 1920) / 757
+const unit = () => Math.min(document.querySelector('main').clientWidth, 1600) / 1024
 
 function loadSrcset(scope) {
   $$('[data-srcset]', scope).forEach((el) => {

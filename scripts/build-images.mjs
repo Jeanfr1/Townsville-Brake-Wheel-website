@@ -7,7 +7,7 @@ import { join } from 'node:path'
 
 const V = 'v1'
 // per-plate bumps (a changed plate gets a new name; old names stay valid for cached pages)
-const BUMP = { local: 'v2' }
+const BUMP = { local: 'v2', 'hero-covered': 'v2', 'hero-mid': 'v2', 'hero-lifted': 'v2', 'hero-revealed': 'v2' }
 const ver = (name) => BUMP[name] || V
 const SRC = 'assets-src'
 const OUT = 'public/img'
@@ -18,10 +18,10 @@ const exists = (p) => access(p).then(() => true, () => false)
 
 const plates = [
   // name, widths, avif quality, webp quality
-  ['hero-covered', [1280, 1920, 2560], 52, 74],
-  ['hero-mid', [1280, 1920, 2560], 52, 74],
-  ['hero-lifted', [1280, 1920, 2560], 52, 74],
-  ['hero-revealed', [1280, 1920, 2560], 52, 74],
+  ['hero-covered', [1600, 2400, 3072], 52, 74],
+  ['hero-mid', [1600, 2400, 3072], 52, 74],
+  ['hero-lifted', [1600, 2400, 3072], 52, 74],
+  ['hero-revealed', [1600, 2400, 3072], 52, 74],
   ['hero-mobile', [720, 1080, 1440], 52, 74],
   ['alignment', [1280, 1920, 2880], 50, 72],
   ['local', [960, 1600, 2400], 52, 74],
@@ -45,9 +45,9 @@ for (const [name, widths, qa, qw] of plates) {
 for (const state of ['covered', 'mid', 'lifted', 'revealed']) {
   const src = join(SRC, `hero-${state}-fg.png`)
   if (!(await exists(src))) continue
-  for (const w of [1280, 1920, 2560]) {
+  for (const w of [1600, 2400, 3072]) {
     await sharp(src).resize({ width: w }).webp({ quality: 76, alphaQuality: 90, effort: 6 })
-      .toFile(join(OUT, `hero-${state}-fg-${V}-${w}.webp`))
+      .toFile(join(OUT, `hero-${state}-fg-v2-${w}.webp`))
   }
   console.log('ok fg', state)
 }
@@ -74,7 +74,7 @@ await square(512, 'public/icon-512.png')
 if (await exists(join(SRC, 'hero-mid.png'))) {
   const mark = await sharp(logo).resize({ width: 300 }).toBuffer()
   await sharp(join(SRC, 'hero-mid.png'))
-    .extract({ left: 0, top: 820, width: 2560, height: 1344 })
+    .extract({ left: 256, top: 560, width: 2560, height: 1344 })
     .resize(1200, 630)
     .composite([{ input: mark, left: 36, top: 30 }])
     .jpeg({ quality: 82, mozjpeg: true }).toFile(join('public', `og-${V}.jpg`))
@@ -82,4 +82,5 @@ if (await exists(join(SRC, 'hero-mid.png'))) {
 
 // campaign film for the viewer (loaded only when the visitor opens it)
 await copyFile('site/assets/hero-reveal-720.mp4', 'public/media/hero-reveal-720.mp4')
+// (og-v1.jpg keeps its name: crawlers cache by URL and the card still shows the same scene)
 console.log('done')

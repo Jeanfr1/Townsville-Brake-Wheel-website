@@ -1,11 +1,13 @@
 /* Desktop = the approved board (docs/direcao-com-logo-A.png, 757 board px wide).
    Every length is board px x --u; text positions come from board-fit.css. */
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .topbar { transform: translateY(-101%); transition: transform .45s var(--ease-out); }
   .topbar.is-shown { transform: none; }
   .menu-toggle, .menu { display: none !important; }
 
   .fit, .hero-word, .ln, .svc h3, .svc p { white-space: nowrap; }
+  /* the board, centred; backgrounds and photos bleed past it */
+  .frame { position: absolute; top: 0; bottom: 0; left: calc((100% - 757 * var(--u)) / 2); width: calc(757 * var(--u)); }
   .fit, .hero-word, .al-title .ln, .sv-title .ln, .lo-word, .co-title .ln { position: absolute; margin: 0; }
 
   /* ---------- 1 · hero ---------- */
@@ -14,7 +16,9 @@
     position: sticky; top: min(0px, calc(100svh - 655 * var(--u)));
     height: calc(655 * var(--u)); overflow: hidden; background: #0d1015;
   }
-  .plates, .plate, .plate img, .fg, .fg-plate { position: absolute; inset: 0; width: 100%; height: 100%; }
+  /* hero plates reach 140 board px past each side of the frame (kit pixels, see prepare-images.py) */
+  .plates, .fg { position: absolute; top: 0; left: calc(-140 * var(--u)); width: calc(1037 * var(--u)); height: 100%; }
+  .plate, .plate img, .fg-plate { position: absolute; inset: 0; width: 100%; height: 100%; }
   .plate img, .fg-plate { object-fit: cover; max-width: none; }
   .plate { opacity: 0; }
   .plate.is-base { opacity: 1; }
@@ -37,14 +41,14 @@
   .hero-word .sx {
     transform: scaleX(var(--sx, 1));
     color: transparent;
-    background: image-set(url('/img/hero-mid-v1-1920.avif') type('image/avif'), url('/img/hero-mid-v1-1920.webp') type('image/webp')) no-repeat;
-    background-size: calc(757 * var(--u) / var(--sx, 1)) calc(655 * var(--u));
-    background-position: calc(-33 * var(--u) / var(--sx, 1)) calc(-108 * var(--u));
+    background: image-set(url('/img/hero-mid-v2-1600.avif') type('image/avif'), url('/img/hero-mid-v2-1600.webp') type('image/webp')) no-repeat;
+    background-size: calc(1037 * var(--u) / var(--sx, 1)) calc(655 * var(--u));
+    background-position: calc(-173 * var(--u) / var(--sx, 1)) calc(-108 * var(--u));
     -webkit-background-clip: text; background-clip: text;
     filter: brightness(.6) contrast(1.6) saturate(.85);
   }
 
-  .hero-head { position: absolute; inset: 0 0 auto; z-index: 6; height: 0; }
+  .hero-head { position: absolute; inset: 0 0 auto; z-index: 8; height: 0; }
   .brand { position: absolute; left: calc(51 * var(--u)); top: calc(4 * var(--u)); width: calc(182 * var(--u)); filter: drop-shadow(0 calc(3 * var(--u)) calc(8 * var(--u)) #0007); }
   .brand img { width: 100%; height: auto; }
   .nav-main a, .nav-foot a {
@@ -107,7 +111,7 @@
   .al-marks { z-index: 1; }
 
   /* ---------- 3 · services: the one solid colour ---------- */
-  .services { position: relative; height: calc(297 * var(--u)); overflow: hidden; background: var(--yellow); color: var(--black); }
+  .services { position: relative; height: calc(297 * var(--u)); overflow: hidden; background: var(--yellow); color: var(--black); box-shadow: 0 0 0 100vmax var(--yellow); clip-path: inset(0 -100vmax); }
   .wheel { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #111; stroke-width: 2.1; opacity: .86; overflow: visible; }
   .wheel .thin { stroke-width: 1; }
   .wheel .dash { stroke-dasharray: 9 5; stroke-width: 1; }
@@ -131,7 +135,7 @@
   .svc p { position: absolute; font-family: var(--mono); font-weight: 400; text-transform: uppercase; color: #1a1a1a; }
 
   /* ---------- 4 · local ---------- */
-  .local { position: relative; height: calc(348 * var(--u)); overflow: hidden; background: #121212; }
+  .local { position: relative; height: calc(348 * var(--u)); overflow: hidden; background: var(--ink); }
   .lo-media {
     position: absolute; top: 0; right: 0; width: calc(510.4 * var(--u)); height: calc(348 * var(--u));
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%); mask-image: linear-gradient(90deg, transparent 0, #000 18%);
@@ -139,9 +143,9 @@
   .lo-media picture, .lo-media img { display: block; width: 100%; height: 100%; }
   .lo-media img { object-fit: cover; max-width: none; filter: contrast(1.08) saturate(1.12); }
   .lo-shade {
-    position: absolute; inset: 0; pointer-events: none;
+    position: absolute; top: 0; right: 0; width: calc(510.4 * var(--u)); height: 100%; pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(14, 14, 14, .9) calc(180 * var(--u)), rgba(14, 14, 14, .55) calc(300 * var(--u)), rgba(14, 14, 14, 0) calc(430 * var(--u))),
+      linear-gradient(90deg, rgba(11, 11, 11, .9) 0, rgba(11, 11, 11, .5) 22%, rgba(11, 11, 11, 0) 42%),
       linear-gradient(180deg, rgba(10, 10, 10, .25), rgba(10, 10, 10, 0) 30%, rgba(10, 10, 10, 0) 80%, rgba(10, 10, 10, .4));
   }
   .lo-word { z-index: 2; font-family: var(--display); font-weight: 400; text-transform: uppercase; color: rgba(242, 242, 237, .9); }
@@ -149,9 +153,9 @@
   .lo-dash { position: absolute; z-index: 2; left: calc(32.5 * var(--u)); top: calc(271 * var(--u)); width: calc(40 * var(--u)); height: max(2px, calc(2.5 * var(--u))); }
 
   /* ---------- 5 · contact + footer on one photograph ---------- */
-  .finale { position: relative; height: calc(425 * var(--u)); overflow: hidden; background: #101010; }
+  .finale { position: relative; height: calc(425 * var(--u)); overflow: hidden; background: var(--ink); }
   .co-media {
-    position: absolute; top: calc(-44 * var(--u)); left: calc(287 * var(--u)); width: calc(470 * var(--u));
+    position: absolute; top: calc(-44 * var(--u)); right: 0; width: calc(470 * var(--u));
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16%); mask-image: linear-gradient(90deg, transparent 0, #000 16%);
   }
   .co-media picture { display: block; }
@@ -159,7 +163,7 @@
   .co-shade {
     position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(12, 12, 12, .92) calc(250 * var(--u)), rgba(12, 12, 12, .5) calc(330 * var(--u)), rgba(12, 12, 12, 0) calc(420 * var(--u))),
+      linear-gradient(90deg, rgba(11, 11, 11, 0) 0, rgba(11, 11, 11, 0) calc(100% - 470 * var(--u)), rgba(11, 11, 11, .55) calc(100% - 420 * var(--u)), rgba(11, 11, 11, 0) calc(100% - 300 * var(--u))),
       linear-gradient(0deg, rgba(10, 10, 10, .8) 0, rgba(10, 10, 10, .35) calc(90 * var(--u)), rgba(10, 10, 10, 0) calc(150 * var(--u)));
   }
   .contact { position: static; }

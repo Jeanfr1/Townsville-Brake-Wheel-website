@@ -54,11 +54,15 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   const p = await page.evaluate(() => document.querySelector('[data-hero]').dataset.p)
   check('desktop: hero progress reaches 1', Number(p) === 1, `p=${p}`)
   check('desktop: alignment docked at pin end', await page.evaluate(() => document.querySelector('#alignment').classList.contains('is-docked')))
-  check('desktop: compact bar shown after hero header', await page.evaluate(() => document.querySelector('.topbar').classList.contains('is-shown')))
+  await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), pin.end + 500)
+  await page.waitForTimeout(400)
+  check('desktop: compact bar shown once the hero header has gone', await page.evaluate(() => document.querySelector('.topbar').classList.contains('is-shown')))
+  await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), pin.end)
+  await page.waitForTimeout(300)
 
   // hand-off must be pixel-identical: iris layer just before vs docked section just after
   // compare the wheel area only (copy and marks animate in after the dock)
-  const box = await page.evaluate(() => { const r = document.querySelector('#alignment').getBoundingClientRect(); const u = r.width / 757; return { x: Math.round(330 * u), y: Math.round(r.top), width: Math.round(220 * u), height: Math.round(r.height) } })
+  const box = await page.evaluate(() => { const r = document.querySelector('#alignment .frame').getBoundingClientRect(); const u = r.width / 757; return { x: Math.round(r.left + 330 * u), y: Math.round(r.top), width: Math.round(220 * u), height: Math.round(r.height) } })
   await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), pin.end - 1)
   await page.waitForTimeout(200); await frames(page)
   const before = await page.screenshot({ clip: box })
@@ -135,6 +139,24 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   const hit = text.match(PROCESS_WORDS)
   check('copy: no production notes in text or alt', !hit, hit ? hit[0] : '')
   check('desktop: no console errors', errors.length === 0, errors.join(' | '))
+  await ctx.close()
+}
+
+// ---------------------------------------------------------------- scale (no "super zoom")
+for (const vp of [{ width: 1440, height: 900 }, { width: 1920, height: 1080 }, { width: 1280, height: 800 }]) {
+  const { ctx, page } = await open(vp, '?static&nosmooth')
+  const m = await page.evaluate(() => {
+    const vh = innerHeight, q = (s) => document.querySelector(s)
+    const h = (s) => q(s).getBoundingClientRect().height / vh
+    const fs = (s) => Math.max(...[...document.querySelectorAll(s)].map((e) => parseFloat(getComputedStyle(e).fontSize)))
+    const small = [...document.querySelectorAll('.hero-side, .al-lead, .al-list, .al-side, .sv-note, .svc p, .nav-main a')].map((e) => parseFloat(getComputedStyle(e).fontSize))
+    return { hero: h('.hero'), al: h('#alignment'), sv: h('#services'), lo: h('#local'), fin: h('.finale'), titles: fs('.al-title .ln, .sv-title .ln, .co-title .ln'), smallMin: Math.min(...small), frame: q('.hero .frame').getBoundingClientRect().width / innerWidth }
+  })
+  const tag = `scale ${vp.width}`
+  check(`${tag}: hero fits about one screen (<= 1.05 vh)`, m.hero <= 1.05, `${m.hero.toFixed(2)} vh`)
+  check(`${tag}: sections stay under 0.8 vh`, Math.max(m.al, m.sv, m.lo, m.fin) <= 0.8, [m.al, m.sv, m.lo, m.fin].map((v) => v.toFixed(2)).join('/'))
+  check(`${tag}: section titles <= 7.5% of the width (earlier sites: 4.9-8.5%)`, m.titles <= vp.width * 0.075, `${Math.round(m.titles)} px`)
+  check(`${tag}: small text >= 11 px`, m.smallMin >= 11, `${m.smallMin.toFixed(1)} px`)
   await ctx.close()
 }
 

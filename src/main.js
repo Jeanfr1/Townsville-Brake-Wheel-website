@@ -15,7 +15,7 @@ import { initScenes } from './js/scenes.js'
 
 const root = document.documentElement
 const isStatic = root.classList.contains('is-static')
-const desktop = matchMedia('(min-width: 900px)').matches
+const desktop = matchMedia('(min-width: 1024px)').matches
 const desktopMotion = desktop && !isStatic
 
 if (desktopMotion) root.classList.add('motion')

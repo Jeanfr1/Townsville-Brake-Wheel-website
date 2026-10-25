@@ -1,5 +1,5 @@
 /* Phones and small tablets: the board's order and voice, stacked. */
-@media (max-width: 899.98px) {
+@media (max-width: 1023.98px) {
   .topbar { gap: 12px; }
   .topbar-nav { display: none; }
   .topbar .btn-sm { margin-left: auto; min-height: 44px; font-size: 12px; padding: 0 1.3em; }
@@ -105,8 +105,20 @@
   .btn-foot { justify-self: end; min-height: 48px; font-size: 13px; }
 }
 
-@media (max-width: 899.98px) and (min-width: 600px) {
-  .hero-word { font-size: 36vw; }
+@media (max-width: 1023.98px) and (min-width: 600px) {
+  /* tablets: keep phone order, but photos and type at a tablet scale */
+  .hero-word { font-size: 30vw; left: 6vw; }
+  .hero-tag { top: calc(var(--bar-h) + 3.5vw + 27.5vw); left: 6.6vw; }
+  .al-media, .al-shade { aspect-ratio: 16 / 9; }
+  .al-title { font-size: clamp(64px, 12vw, 112px); margin-top: -8vw; }
+  .lo-media, .lo-shade { aspect-ratio: 16 / 9; }
+  .lo-media img { object-position: 60% 70%; }
+  .lo-word { font-size: 30vw; margin-top: -11vw; }
+  .co-media, .co-shade { aspect-ratio: 16 / 10; }
+  .co-media img { height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .contact { margin-top: -10vw; }
+  .co-title { font-size: clamp(52px, 10vw, 96px); }
+  .sv-title { font-size: clamp(60px, 12vw, 110px); }
   .svc-list { grid-template-columns: repeat(4, 1fr); }
   .svc:nth-child(odd) { border-right: 0; }
   .svc + .svc { border-left: 1px solid #1114; }
