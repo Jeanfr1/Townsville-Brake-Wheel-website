@@ -2,17 +2,29 @@
   "name": "townsville-brake-wheel-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Approved vintage website for Townsville Brake & Wheel Alignment Centre",
+  "description": "One-page site for Townsville Brake & Wheel Alignment Centre, Garbutt QLD",
   "type": "module",
   "scripts": {
-    "dev": "python3 -m http.server 8080 --bind 127.0.0.1 --directory site",
-    "start": "npm run dev",
-    "check": "node --check site/app.js && python3 tools/check_kit.py",
-    "build": "node tools/build.mjs"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4319 --strictPort",
+    "prepare-images": "python3 scripts/prepare-images.py",
+    "images": "node scripts/build-images.mjs",
+    "qa": "node scripts/qa.mjs",
+    "compare": "node scripts/compare-board.mjs",
+    "check:kit": "python3 tools/check_kit.py"
   },
   "engines": { "node": ">=20" },
   "repository": {
     "type": "git",
     "url": "https://github.com/Jeanfr1/Townsville-Brake-Wheel-website.git"
+  },
+  "devDependencies": {
+    "@fontsource/anton": "^5.1.0",
+    "@fontsource/barlow-condensed": "^5.1.0",
+    "@fontsource/ibm-plex-mono": "^5.1.0",
+    "playwright-core": "^1.48.0",
+    "sharp": "^0.33.5",
+    "vite": "^6.0.7"
   }
 }

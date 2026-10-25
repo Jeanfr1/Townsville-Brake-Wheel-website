@@ -1,0 +1,87 @@
+/* Motion layer. .motion is set by main.js (desktop, motion allowed); .intro-wait by the
+   boot script in <head>, removed by hero.js when the intro starts (3.5 s failsafe). */
+.intro-wait .hero-word, .intro-wait .hero-tag, .intro-wait .hero-head, .intro-wait .hero-side,
+.intro-wait .hero-dash, .intro-wait .hero-marks, .intro-wait .film-link { visibility: hidden; }
+
+.sv-door { display: none; }
+
+@media (min-width: 900px) {
+  .intro-wait .plates, .intro-wait .fg { opacity: 0; }
+  .hero-word { translate: 0 calc((var(--wq, 0) + var(--wy, 0)) * var(--u)); clip-path: inset(-30% -3% 0 -3%); }
+  .fg-plate[data-state='mid'] { opacity: 1; }
+
+  .motion .hero { height: calc(655 * var(--u) + 150svh); }
+
+  /* the four reveal states, swapped by soft wipes that follow the cover's movement */
+  .motion .plate[data-state='covered'] {
+    z-index: 2;
+    -webkit-mask-image: linear-gradient(100deg, transparent calc(var(--c, 1) * 128% - 28%), #000 calc(var(--c, 1) * 128%));
+    mask-image: linear-gradient(100deg, transparent calc(var(--c, 1) * 128% - 28%), #000 calc(var(--c, 1) * 128%));
+  }
+  .motion .plate[data-state='lifted'] {
+    z-index: 3; opacity: 1;
+    -webkit-mask-image: linear-gradient(0deg, #000 calc(var(--l, 0) * 128% - 28%), transparent calc(var(--l, 0) * 128%));
+    mask-image: linear-gradient(0deg, #000 calc(var(--l, 0) * 128% - 28%), transparent calc(var(--l, 0) * 128%));
+  }
+  .motion .plate[data-state='revealed'] {
+    z-index: 4; opacity: 1;
+    -webkit-mask-image: linear-gradient(60deg, #000 calc(var(--r, 0) * 128% - 28%), transparent calc(var(--r, 0) * 128%));
+    mask-image: linear-gradient(60deg, #000 calc(var(--r, 0) * 128% - 28%), transparent calc(var(--r, 0) * 128%));
+  }
+  /* cut-outs follow the same wipes, so CONTROL is always behind the state on screen */
+  .motion .fg-plate[data-state='mid'] {
+    -webkit-mask-image:
+      linear-gradient(100deg, #000 calc(var(--c, 1) * 128% - 28%), transparent calc(var(--c, 1) * 128%)),
+      linear-gradient(0deg, transparent calc(var(--l, 0) * 128% - 28%), #000 calc(var(--l, 0) * 128%)),
+      linear-gradient(60deg, transparent calc(var(--r, 0) * 128% - 28%), #000 calc(var(--r, 0) * 128%));
+    mask-image:
+      linear-gradient(100deg, #000 calc(var(--c, 1) * 128% - 28%), transparent calc(var(--c, 1) * 128%)),
+      linear-gradient(0deg, transparent calc(var(--l, 0) * 128% - 28%), #000 calc(var(--l, 0) * 128%)),
+      linear-gradient(60deg, transparent calc(var(--r, 0) * 128% - 28%), #000 calc(var(--r, 0) * 128%));
+    -webkit-mask-composite: source-in, source-in; mask-composite: intersect;
+  }
+  .motion .fg-plate[data-state='lifted'] {
+    opacity: 1;
+    -webkit-mask-image:
+      linear-gradient(0deg, #000 calc(var(--l, 0) * 128% - 28%), transparent calc(var(--l, 0) * 128%)),
+      linear-gradient(60deg, transparent calc(var(--r, 0) * 128% - 28%), #000 calc(var(--r, 0) * 128%));
+    mask-image:
+      linear-gradient(0deg, #000 calc(var(--l, 0) * 128% - 28%), transparent calc(var(--l, 0) * 128%)),
+      linear-gradient(60deg, transparent calc(var(--r, 0) * 128% - 28%), #000 calc(var(--r, 0) * 128%));
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+  }
+  .motion .fg-plate[data-state='revealed'] {
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(60deg, #000 calc(var(--r, 0) * 128% - 28%), transparent calc(var(--r, 0) * 128%));
+    mask-image: linear-gradient(60deg, #000 calc(var(--r, 0) * 128% - 28%), transparent calc(var(--r, 0) * 128%));
+  }
+  /* a soft light rides the wipe edge and hides the overlap */
+  .motion .sweep { --a: 100deg; opacity: var(--so, 0);
+    background: linear-gradient(var(--a), transparent calc(var(--sp, 0) * 128% - 40%), rgba(255, 236, 205, .75) calc(var(--sp, 0) * 128% - 17%), transparent calc(var(--sp, 0) * 128% + 2%)); }
+  .motion [data-sa='lift'] .sweep { --a: 0deg; }
+  .motion [data-sa='fly'] .sweep { --a: 60deg; }
+
+  /* hand-off: wheel -> alignment close-up, docked into the next section */
+  .motion .iris { display: block; position: absolute; z-index: 7; left: 0; right: 0; bottom: 0; height: calc(353 * var(--u)); visibility: hidden; pointer-events: none; }
+  .motion .iris-clip { position: absolute; inset: 0; overflow: hidden; background: var(--ink);
+    clip-path: circle(calc(var(--ir, 0) * var(--u)) at calc(412 * var(--u)) calc(235 * var(--u))); }
+  .motion .iris-media { transform-origin: calc(403.5 * var(--u)) calc(171 * var(--u)); will-change: transform; }
+  .iris-ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--yellow); overflow: visible; }
+  .iris-ring circle { stroke-width: 2; vector-effect: non-scaling-stroke; }
+  .motion .alignment { z-index: 2; margin-top: calc(-353 * var(--u)); visibility: hidden; }
+  .motion .alignment.is-docked { visibility: visible; }
+}
+
+/* roller door over the yellow bay (both layouts) */
+.js:not(.is-static) .sv-door {
+  display: block; position: absolute; inset: -1px 0 0; z-index: 5; pointer-events: none;
+  background:
+    linear-gradient(0deg, var(--yellow) 0 3px, #0d0d0d 3px 7px, transparent 7px),
+    repeating-linear-gradient(180deg, #1b1b1b 0 14px, #121212 14px 16px, #0e0e0e 16px 18px);
+  box-shadow: 0 14px 30px #0009;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet[open], .sheet[open]::backdrop { animation: none; }
+}

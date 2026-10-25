@@ -8,3 +8,7 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+assets-src/
+scripts/out/
+.vercel

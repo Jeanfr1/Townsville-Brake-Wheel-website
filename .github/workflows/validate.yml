@@ -17,14 +17,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python3 -m pip install -r tools/requirements.txt
-      - run: npm run check
+      - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: townsville-website
-          path: dist/
-          if-no-files-found: error
+      - run: npm run check:kit
