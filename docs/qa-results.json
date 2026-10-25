@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-25",
+  "site_approved": true,
+  "logo": "A / Selo Heritage",
+  "js_syntax": "passed",
+  "architecture_and_assets": "passed",
+  "images_decode": "passed",
+  "original_photos": "byte-identical to attachments",
+  "logo_asset": "byte-identical to supplied originals/Townsville-Logo-A-Transparente.png; 3072x2048 RGBA alpha",
+  "film": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 11.666667,
+    "sample_frames": "inspected"
+  },
+  "pdf": {
+    "pages": 4,
+    "visual_review": "passed"
+  },
+  "browser": "unverified: no browser available in connected UI inventory",
+  "deployment": "none",
+  "delivery_optimization": "Video bitrate, reference JPEGs and PDF images optimized; all native master PNGs, approved logo and original photographs preserved.",
+  "build": "passed: npm run build",
+  "github_ci": "configured; execution pending push"
+}

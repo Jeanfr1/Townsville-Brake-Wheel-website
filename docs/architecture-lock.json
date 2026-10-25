@@ -1,0 +1,62 @@
+{
+  "project": "Townsville Brake & Wheel Alignment Centre",
+  "visitor_language": "en-AU",
+  "site_approved": true,
+  "logo_approved": true,
+  "logo": "A / Selo Heritage",
+  "approval_date": "2026-10-25",
+  "logo_approval_text": "modelo A",
+  "site_reference": "docs/direcao-com-logo-A.png",
+  "final_identity_preview": "docs/direcao-com-logo-A.png",
+  "palette": {
+    "yellow": "#F2C329",
+    "black": "#111111",
+    "white": "#F2F2ED"
+  },
+  "hero": "vintage yellow Australian Falcon GT, black bonnet, silver cover reveal",
+  "sections": [
+    {
+      "id": "start",
+      "background": "image",
+      "heading": "CONTROL",
+      "source": "generated campaign"
+    },
+    {
+      "id": "alignment",
+      "background": "image",
+      "heading": "EVERY ANGLE MATTERS.",
+      "source": "generated campaign"
+    },
+    {
+      "id": "services",
+      "background": "color",
+      "color": "#F2C329",
+      "heading": "KEEPING YOU ON TRACK."
+    },
+    {
+      "id": "local",
+      "background": "image",
+      "heading": "LOCAL",
+      "source": "supplied original classic-car screenshot"
+    },
+    {
+      "id": "contact",
+      "background": "image",
+      "heading": "GET YOUR NEXT DRIVE SORTED.",
+      "source": "supplied original workshop screenshot",
+      "footer": "on same photograph"
+    }
+  ],
+  "forbidden": [
+    "magenta/purple UI palette",
+    "Defender/SUV hero",
+    "modern supercar hero",
+    "old rejected rotor/slab-serif logo",
+    "logo B",
+    "extra solid main section",
+    "scrapbook waves",
+    "fake appointments/reviews/prices"
+  ],
+  "original_layout_reference": "references/layout-aprovado-antes-da-logo-A.jpg",
+  "logo_sha256": "79f97b15fa8ec2bfe222c5276eee9c2573d8f750e47f82a7040694b09d9cd46c"
+}

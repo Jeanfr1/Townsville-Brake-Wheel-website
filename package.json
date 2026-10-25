@@ -1,0 +1,18 @@
+{
+  "name": "townsville-brake-wheel-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Approved vintage website for Townsville Brake & Wheel Alignment Centre",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8080 --bind 127.0.0.1 --directory site",
+    "start": "npm run dev",
+    "check": "node --check site/app.js && python3 tools/check_kit.py",
+    "build": "node tools/build.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeanfr1/Townsville-Brake-Wheel-website.git"
+  }
+}

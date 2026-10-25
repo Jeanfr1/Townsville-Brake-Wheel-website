@@ -1,0 +1,44 @@
+{
+  "duration": 11.666667,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "audio": false,
+  "kind": "cinematic edit from generated photographic states; no continuous cloth simulation",
+  "stages": [
+    {
+      "asset": "hero-covered",
+      "start": 0
+    },
+    {
+      "asset": "hero-mid",
+      "start": 2.75
+    },
+    {
+      "asset": "hero-lifted",
+      "start": 5.5
+    },
+    {
+      "asset": "hero-revealed",
+      "start": 8.25
+    }
+  ],
+  "transition_duration": 0.65,
+  "camera": "progressive 2.5D push",
+  "hero_scroll": {
+    "desktop_svh": 178,
+    "mobile_svh": 145,
+    "handoff_progress": [
+      0.74,
+      1
+    ]
+  },
+  "mobile": "portrait poster + optional film viewer",
+  "accessibility": [
+    "pause",
+    "replay",
+    "range scrubber",
+    "reduced motion",
+    "native controls"
+  ]
+}

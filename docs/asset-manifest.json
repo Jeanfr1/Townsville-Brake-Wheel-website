@@ -1,0 +1,107 @@
+[
+  {
+    "path": "site/assets/alignment.webp",
+    "bytes": 234924,
+    "sha256": "c8fe845ace5c5eedf33e22e5eaca975c535fca6a701f2d104ba881d6b50eee78",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/classic-clean-mask.svg",
+    "bytes": 383,
+    "sha256": "1ef5379b1e03a720367be07615da1cefaabc4ef0af54b5207b431cd9934a398f",
+    "origin": "native vector display mask"
+  },
+  {
+    "path": "site/assets/classic-original.png",
+    "bytes": 1922443,
+    "sha256": "7d21387f6948bc7c14ae909e82f8053a339ba92d635b9eee8d1ac3acfa17706b",
+    "width": 1326,
+    "height": 992,
+    "mode": "RGBA",
+    "origin": "client screenshot"
+  },
+  {
+    "path": "site/assets/hero-covered.webp",
+    "bytes": 360450,
+    "sha256": "b8395b109333ae185cf0fc5ed9c05bfea79fce5ad2012255a72f24fc70b6d930",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-lifted.webp",
+    "bytes": 411450,
+    "sha256": "938d339b37e6b1381faa9c3fb2faad09f55102a7c77a9d240b5f8d4d24f4d33f",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-mid.webp",
+    "bytes": 381186,
+    "sha256": "87da83551a12e972ebe2fe6f2e347b255614b699d94e6ebadd5be25ccb28d96d",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-mobile.webp",
+    "bytes": 338636,
+    "sha256": "79132b2a4daf2b40f6bbbe390466edc22dfe65399184a6a0812ad610740c3002",
+    "width": 1122,
+    "height": 1402,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-reveal-720.mp4",
+    "bytes": 2704865,
+    "sha256": "c7cd7eb3124a6c88356be157c4a1e0baae845636850b00b7b53573c462603138",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-reveal-HD.mp4",
+    "bytes": 6461311,
+    "sha256": "47089285420131460de2392635857e99d3be04af9533a388360c82d61a2a871a",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/hero-revealed.webp",
+    "bytes": 374394,
+    "sha256": "4c471c309622522de4860bc9d0a95d558972e71e584f1ea1df20254741187f70",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "origin": "generated campaign / cinematic edit"
+  },
+  {
+    "path": "site/assets/Townsville-Logo-A-Transparente.png",
+    "bytes": 182504,
+    "sha256": "79f97b15fa8ec2bfe222c5276eee9c2573d8f750e47f82a7040694b09d9cd46c",
+    "width": 3072,
+    "height": 2048,
+    "mode": "RGBA",
+    "origin": "approved logo A"
+  },
+  {
+    "path": "site/assets/workshop-clean-mask.svg",
+    "bytes": 289,
+    "sha256": "5416cbefdb02a7316012cf84945da9a7ea01b89aaf8512963ab17d3a236362cd",
+    "origin": "native vector display mask"
+  },
+  {
+    "path": "site/assets/workshop-original.png",
+    "bytes": 1337425,
+    "sha256": "1ada230c9807d81850e22096b9576c3fd0f04c06056e19190f4fd0e72505e504",
+    "width": 758,
+    "height": 1006,
+    "mode": "RGBA",
+    "origin": "client screenshot"
+  }
+]
