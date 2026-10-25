@@ -62,6 +62,7 @@
   .motion [data-sa='fly'] .sweep { --a: 60deg; }
 
   /* hand-off: wheel -> alignment close-up, docked into the next section */
+  .motion .hero-dim { display: block; position: absolute; inset: 0; z-index: 6; background: var(--ink); opacity: 0; pointer-events: none; }
   .motion .iris { display: block; position: absolute; z-index: 7; left: 0; right: 0; bottom: 0; height: calc(353 * var(--u)); visibility: hidden; pointer-events: none; }
   .motion .iris-clip { position: absolute; inset: 0; overflow: hidden; background: var(--ink);
     clip-path: circle(calc(var(--ir, 0) * var(--u)) at calc(412 * var(--u)) calc(235 * var(--u))); }

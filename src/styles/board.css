@@ -84,7 +84,7 @@
   .film-link:hover { opacity: 1; color: var(--yellow); }
 
   /* hand-off layer (motion only): same media as the alignment section, revealed from the front wheel */
-  .iris { display: none; }
+  .iris, .hero-dim { display: none; }
 
   /* ---------- 2 · alignment ---------- */
   .alignment { position: relative; height: calc(353 * var(--u)); overflow: hidden; background: var(--ink); }

@@ -121,6 +121,7 @@
 
       <button class="film-link mono" type="button" data-open="film"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M1 1l8 5-8 5z"/></svg>Watch the reveal</button>
 
+      <div class="hero-dim" aria-hidden="true"></div>
       <!-- hand-off: the front wheel opens onto the alignment close-up (desktop, motion on) -->
       <div class="iris" aria-hidden="true">
         <div class="iris-clip">
@@ -159,6 +160,7 @@
     <ul class="al-list fit mono">
       <li>Better handling</li><li>Longer tyre life</li><li>Safer stopping</li><li>A smoother drive</li>
     </ul>
+    <!-- TODO(tbwac): client sign-off on the board wording kept here and in the services note -->
     <p class="al-side fit mono"><span class="ln">Precision</span> <span class="ln">equipment</span> <span class="ln">Experienced</span> <span class="ln">technicians</span> <span class="ln">Real results</span></p>
   </section>
 
@@ -198,12 +200,13 @@
   </section>
 
   <!-- 4 · LOCAL -->
+  <!-- TODO(tbwac): confirm permission for the two Facebook photos (red classic, workshop front) -->
   <section id="local" class="local" aria-labelledby="local-title">
     <div class="lo-media">
       <picture>
-        <source type="image/avif" srcset="/img/local-v1-960.avif 960w, /img/local-v1-1600.avif 1600w, /img/local-v1-2400.avif 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
-        <source type="image/webp" srcset="/img/local-v1-960.webp 960w, /img/local-v1-1600.webp 1600w, /img/local-v1-2400.webp 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
-        <img src="/img/local-v1-1600.webp" alt="Red classic Ford sedan parked outside the Townsville Brake &amp; Wheel Alignment workshop" width="2652" height="1808" loading="lazy" decoding="async">
+        <source type="image/avif" srcset="/img/local-v2-960.avif 960w, /img/local-v2-1600.avif 1600w, /img/local-v2-2400.avif 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
+        <source type="image/webp" srcset="/img/local-v2-960.webp 960w, /img/local-v2-1600.webp 1600w, /img/local-v2-2400.webp 2400w" sizes="(min-width: 900px) calc(min(100vw, 1920px) * .68), 100vw">
+        <img src="/img/local-v2-1600.webp" alt="Red classic Ford sedan parked outside the Townsville Brake &amp; Wheel Alignment workshop" width="2652" height="1808" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="lo-shade" aria-hidden="true"></div>
@@ -246,6 +249,7 @@
   </div>
 </main>
 
+<!-- TODO(tbwac): hours and ABN only once the client confirms them -->
 <div class="legal mono">
   <p>© {{year}} {{name}}</p>
   <p>{{street}}, {{locality}}</p>

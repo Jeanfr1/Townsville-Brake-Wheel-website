@@ -41,6 +41,7 @@ export function initHero({ motion }) {
   const irisMedia = $('.iris-media', stage)
   const ring = $('.iris-ring circle', stage)
   const fades = $$('.hero-tag, .hero-dash, .hero-side, .film-link', stage)
+  const dim = $('.hero-dim', stage)
   const alignment = $('#alignment')
 
   if (!motion) {
@@ -90,6 +91,7 @@ export function initHero({ motion }) {
       ring.style.opacity = i > 0 ? String(1 - smooth(0.15, 0.55, i)) : '0'
       ring.setAttribute('r', String(radius))
       iris.style.visibility = i > 0 ? 'visible' : 'hidden'
+      dim.style.opacity = String(0.82 * smooth(0.35, 1, i))
 
       const dock = p >= 0.999
       if (dock !== docked) {

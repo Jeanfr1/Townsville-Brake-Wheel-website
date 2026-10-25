@@ -6,7 +6,7 @@
   .menu-toggle { display: block; margin-right: -6px; }
   .topbar-brand img { width: 74px; }
 
-  .hero-head, .hero-side, .hero-marks, .fg, .iris, .sweep, .hero-dash { display: none; }
+  .hero-head, .hero-side, .hero-marks, .fg, .iris, .hero-dim, .sweep, .hero-dash { display: none; }
   .plate:not(.is-base) { display: none; }
 
   /* ---------- 1 · hero ---------- */

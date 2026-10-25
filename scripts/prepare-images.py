@@ -149,10 +149,35 @@ def inpaint_circles(arr, circles):
     return cv2.inpaint(arr, mask, 9, cv2.INPAINT_TELEA)
 
 
+def column_fill(arr, cx, cy, r, clone_cols=(), clone_dy=-45):
+    """Remove a round viewer button from vertical textures (corrugated wall, pillar).
+
+    Each column inside the circle gets the median colour of the same column just
+    above and below the circle, plus the fine grain of the rows above it; columns
+    listed in clone_cols (a lattice window) are cloned from clone_dy rows away.
+    The result is feathered into the photo with a soft circular mask.
+    """
+    out = arr.astype(np.float32).copy()
+    y0, y1 = cy - r, cy + r
+    ring = np.concatenate([arr[y0 - 14:y0 - 3], arr[y1 + 3:y1 + 9]]).astype(np.float32)
+    med = np.median(ring, axis=0)                                   # per-column colour
+    above = arr[y0 - 2 * r - 6:y0 - 6].astype(np.float32)          # same height, just above
+    grain = above - np.median(above, axis=0, keepdims=True)
+    fill = med[None] + grain
+    for x in clone_cols:
+        fill[:, x] = arr[y0 + clone_dy:y1 + clone_dy, x]
+    yy, xx = np.mgrid[y0:y1, 0:arr.shape[1]]
+    d = np.sqrt((yy - cy) ** 2 + (xx - cx) ** 2)
+    m = np.clip((r + 3 - d) / 6, 0, 1)[..., None]
+    out[y0:y1] = out[y0:y1] * (1 - m) + fill * m
+    return out.clip(0, 255).astype(np.uint8)
+
+
 def local():
     a = rgb("originals/classic-original.png")
     # viewer arrows over the walls (left and right of the car)
-    a = inpaint_circles(a, [(42, 490, 40), (1265, 490, 40)])
+    a = column_fill(a, 42, 490, 40, clone_cols=range(0, 20))
+    a = column_fill(a, 1265, 490, 40)
     a = a[88:]                                       # viewer title bar and close button
     save("local.png", upscale(a, 2))
 

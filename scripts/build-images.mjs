@@ -6,6 +6,9 @@ import { mkdir, copyFile, access } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const V = 'v1'
+// per-plate bumps (a changed plate gets a new name; old names stay valid for cached pages)
+const BUMP = { local: 'v2' }
+const ver = (name) => BUMP[name] || V
 const SRC = 'assets-src'
 const OUT = 'public/img'
 await mkdir(OUT, { recursive: true })
@@ -25,13 +28,15 @@ const plates = [
   ['contact', [800, 1300, 1890], 52, 74],
 ]
 
+const only = process.argv.slice(2)
 for (const [name, widths, qa, qw] of plates) {
+  if (only.length && !only.includes(name)) continue
   const src = join(SRC, `${name}.png`)
   if (!(await exists(src))) { console.warn('skip (missing)', src); continue }
   for (const w of widths) {
     const base = sharp(src).resize({ width: w, withoutEnlargement: true })
-    await base.clone().avif({ quality: qa, effort: 6 }).toFile(join(OUT, `${name}-${V}-${w}.avif`))
-    await base.clone().webp({ quality: qw, effort: 6 }).toFile(join(OUT, `${name}-${V}-${w}.webp`))
+    await base.clone().avif({ quality: qa, effort: 6 }).toFile(join(OUT, `${name}-${ver(name)}-${w}.avif`))
+    await base.clone().webp({ quality: qw, effort: 6 }).toFile(join(OUT, `${name}-${ver(name)}-${w}.webp`))
   }
   console.log('ok', name, widths.join('/'))
 }
